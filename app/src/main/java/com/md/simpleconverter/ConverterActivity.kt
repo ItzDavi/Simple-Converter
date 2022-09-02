@@ -7,6 +7,7 @@ import android.text.method.DigitsKeyListener
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.md.simpleconverter.converters.VelocityConverter
 
 class ConverterActivity : AppCompatActivity() {
     private lateinit var spinnerData: ArrayList<String>
@@ -188,7 +189,7 @@ class ConverterActivity : AppCompatActivity() {
             Toast.makeText(this, "WIP", Toast.LENGTH_SHORT).show()
 
         } else if (conversionType == "velocity") {
-            Toast.makeText(this, "WIP", Toast.LENGTH_SHORT).show()
+            result = VelocityConverter().convert(fet, fromSpinner, toSpinner, conversionType)
 
         } else if (conversionType == "temperature") {
             //Celsius convert
@@ -219,9 +220,7 @@ class ConverterActivity : AppCompatActivity() {
                 } else if (toUnit == "Kelvin") {
                     result = ((fromValue - 32) * 5 / 9) + kelvin
                 }
-
             }
-
         }
 
         return result
