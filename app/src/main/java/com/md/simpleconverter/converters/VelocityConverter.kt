@@ -4,7 +4,7 @@ import android.widget.EditText
 import android.widget.Spinner
 
 class VelocityConverter {
-    
+
     fun convert(fet: EditText, fromSpinner: Spinner, toSpinner: Spinner, conversionType: String) : Double {
         val fromUnit = fromSpinner.selectedItem.toString()
         val toUnit = toSpinner.selectedItem.toString()

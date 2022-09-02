@@ -7,6 +7,7 @@ import android.text.method.DigitsKeyListener
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.md.simpleconverter.converters.TemperatureConverter
 import com.md.simpleconverter.converters.VelocityConverter
 
 class ConverterActivity : AppCompatActivity() {
@@ -192,35 +193,7 @@ class ConverterActivity : AppCompatActivity() {
             result = VelocityConverter().convert(fet, fromSpinner, toSpinner, conversionType)
 
         } else if (conversionType == "temperature") {
-            //Celsius convert
-            if (fromUnit == "Celsius") {
-
-                if (toUnit == "Kelvin") {
-                    result = fromValue + kelvin
-
-                } else if (toUnit == "Fahrenheit") {
-                    result = (fromValue * 9 / 5) + 32
-                }
-
-            //Kelvin convert
-            } else if (fromUnit == "Kelvin") {
-
-                if (toUnit == "Celsius") {
-                    result = fromValue - kelvin
-
-                } else if (toUnit == "Fahrenheit") {
-                    result = ((fromValue - kelvin) * 9 / 5) + 32
-                }
-
-            } else if (fromUnit == "Fahrenheit") {
-
-                if (toUnit == "Celsius") {
-                    result = (fromValue - 32) * 5 / 9
-
-                } else if (toUnit == "Kelvin") {
-                    result = ((fromValue - 32) * 5 / 9) + kelvin
-                }
-            }
+            result = TemperatureConverter().convert(fet, fromSpinner, toSpinner, conversionType)
         }
 
         return result
