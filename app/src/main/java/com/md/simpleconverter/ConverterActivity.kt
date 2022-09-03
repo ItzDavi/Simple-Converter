@@ -9,6 +9,7 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.md.simpleconverter.converters.TemperatureConverter
 import com.md.simpleconverter.converters.VelocityConverter
+import kotlin.math.round
 
 class ConverterActivity : AppCompatActivity() {
     private lateinit var spinnerData: ArrayList<String>
@@ -32,7 +33,7 @@ class ConverterActivity : AppCompatActivity() {
         }
 
         val fromEditText = findViewById<EditText>(R.id.from_edittext)
-        //val toEditText = findViewById<EditText>(R.id.to_edittext)
+
         initEditText(fromEditText)
 
         spinnerData = ArrayList()
@@ -43,7 +44,9 @@ class ConverterActivity : AppCompatActivity() {
             convertButton.setOnClickListener {
                 if (checkInputs(fromEditText, fromSpinner, toSpinner)) {
                     resultTextView.visibility = View.VISIBLE
-                    resultTextView.text = convert(fromEditText, fromSpinner, toSpinner, conversion).toString()
+
+                    (fromEditText.text.toString() + " " + fromSpinner.selectedItem.toString() + "   =   " + convert(fromEditText, fromSpinner, toSpinner, conversion).round(2).toString() + " " + toSpinner.selectedItem.toString())
+                        .also { resultTextView.text = it }
                 }
             }
 
@@ -190,12 +193,18 @@ class ConverterActivity : AppCompatActivity() {
             Toast.makeText(this, "WIP", Toast.LENGTH_SHORT).show()
 
         } else if (conversionType == "velocity") {
-            result = VelocityConverter().convert(fet, fromSpinner, toSpinner, conversionType)
+            result = VelocityConverter().convert(fet, fromSpinner, toSpinner)
 
         } else if (conversionType == "temperature") {
             result = TemperatureConverter().convert(fet, fromSpinner, toSpinner, conversionType)
         }
 
         return result
+    }
+
+    private fun Double.round(decimals: Int) : Double {
+        var multiplier = 1.0
+        repeat(decimals) { multiplier *= 10 }
+        return round(this * multiplier) / multiplier
     }
 }
