@@ -119,48 +119,19 @@ class ConverterActivity : AppCompatActivity() {
 
         when (conversionType) {
             "lengths" -> {
-                spinnerData.add("km")
-                spinnerData.add("m")
-                spinnerData.add("dm")
-                spinnerData.add("cm")
-                spinnerData.add("mm")
-                spinnerData.add("µm")
-                spinnerData.add("nm")
-                spinnerData.add("mi")
-                spinnerData.add("yd")
-                spinnerData.add("ft")
-                spinnerData.add("in")
-                spinnerData.add("nmi")
-
+                spinnerData.addAll(listOf("km", "m", "dm", "cm", "mm", "µm", "nm", "mi", "yd", "ft", "in", "nmi"))
             }
+
             "datadim" -> {
-                spinnerData.add("Bit")
-                spinnerData.add("Kbit")
-                spinnerData.add("Mbit")
-                spinnerData.add("Gbit")
-                spinnerData.add("Tbit")
-                spinnerData.add("Pbit")
-                spinnerData.add("Byte")
-                spinnerData.add("KByte")
-                spinnerData.add("MByte")
-                spinnerData.add("GByte")
-                spinnerData.add("TByte")
-                spinnerData.add("PByte")
-
+                spinnerData.addAll(listOf("Bit", "Kbit", "Mbit", "Gbit", "Tbit", "Pbit", "Byte", "KByte", "MByte", "GByte", "TByte", "PByte"))
             }
+
             "velocity" -> {
-                spinnerData.add("mp/h")
-                spinnerData.add("ft/s")
-                spinnerData.add("m/s")
-                spinnerData.add("km/h")
-                spinnerData.add("kn")
-
+                spinnerData.addAll(listOf("mp/h", "ft/s", "m/s", "km/h", "kn"))
             }
-            "temperature" -> {
-                spinnerData.add("Celsius")
-                spinnerData.add("Fahrenheit")
-                spinnerData.add("Kelvin")
 
+            "temperature" -> {
+                spinnerData.addAll(listOf("Celsius", "Fahrenheit", "Kelvin"))
             }
         }
     }
@@ -184,13 +155,6 @@ class ConverterActivity : AppCompatActivity() {
     }
 
     private fun convert(fet: EditText, fromSpinner: Spinner, toSpinner: Spinner, conversionType: String) : Double {
-        val fromUnit = fromSpinner.selectedItem.toString()
-        val toUnit = toSpinner.selectedItem.toString()
-
-        val fromValue = fet.text.toString().toDouble()
-
-        val kelvin = 273.15
-
         var result = 0.0
 
         when (conversionType) {
