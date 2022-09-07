@@ -213,7 +213,7 @@ class ConverterActivity : AppCompatActivity() {
             }
 
             "time" -> {
-                Toast.makeText(this, "WIP", Toast.LENGTH_SHORT).show()
+                result = TimeConverter().convert(fet, fromSpinner, toSpinner)
             }
         }
 
