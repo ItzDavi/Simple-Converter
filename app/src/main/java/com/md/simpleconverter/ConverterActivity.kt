@@ -7,6 +7,7 @@ import android.text.method.DigitsKeyListener
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.md.simpleconverter.converters.LengthsConverter
 import com.md.simpleconverter.converters.TemperatureConverter
 import com.md.simpleconverter.converters.VelocityConverter
 import kotlin.math.round
@@ -45,8 +46,13 @@ class ConverterActivity : AppCompatActivity() {
                 if (checkInputs(fromEditText, fromSpinner, toSpinner)) {
                     resultTextView.visibility = View.VISIBLE
 
-                    (fromEditText.text.toString() + " " + fromSpinner.selectedItem.toString() + "   =   " + convert(fromEditText, fromSpinner, toSpinner, conversion).round(2).toString() + " " + toSpinner.selectedItem.toString())
-                        .also { resultTextView.text = it }
+                    if (conversion == "lengths") {
+                        (fromEditText.text.toString() + " " + fromSpinner.selectedItem.toString() + "   =   " + convert(fromEditText, fromSpinner, toSpinner, conversion).round(5).toString() + " " + toSpinner.selectedItem.toString())
+                            .also { resultTextView.text = it }
+                    } else {
+                        (fromEditText.text.toString() + " " + fromSpinner.selectedItem.toString() + "   =   " + convert(fromEditText, fromSpinner, toSpinner, conversion).round(2).toString() + " " + toSpinner.selectedItem.toString())
+                            .also { resultTextView.text = it }
+                    }
                 }
             }
 
@@ -115,6 +121,7 @@ class ConverterActivity : AppCompatActivity() {
             "lengths" -> {
                 spinnerData.add("km")
                 spinnerData.add("m")
+                spinnerData.add("dm")
                 spinnerData.add("cm")
                 spinnerData.add("mm")
                 spinnerData.add("µm")
@@ -192,7 +199,7 @@ class ConverterActivity : AppCompatActivity() {
 
             }
             "lengths" -> {
-                Toast.makeText(this, "WIP", Toast.LENGTH_SHORT).show()
+                result = LengthsConverter().convert(fet, fromSpinner, toSpinner)
 
             }
             "velocity" -> {
@@ -200,7 +207,7 @@ class ConverterActivity : AppCompatActivity() {
 
             }
             "temperature" -> {
-                result = TemperatureConverter().convert(fet, fromSpinner, toSpinner, conversionType)
+                result = TemperatureConverter().convert(fet, fromSpinner, toSpinner)
             }
         }
 
@@ -208,7 +215,7 @@ class ConverterActivity : AppCompatActivity() {
     }
 
     private fun Double.round(decimals: Int) : Double {
-        var multiplier = 1.0
+        var multiplier = 1.00
         repeat(decimals) { multiplier *= 10 }
         return round(this * multiplier) / multiplier
     }
