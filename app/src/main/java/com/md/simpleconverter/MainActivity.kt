@@ -18,33 +18,41 @@ class MainActivity : AppCompatActivity() {
         val lengthsCardView = findViewById<MaterialCardView>(R.id.home_lengths_cardview)
         val velocityCardView = findViewById<MaterialCardView>(R.id.home_velocity_cardview)
         val temperatureCardView = findViewById<MaterialCardView>(R.id.home_temperature_cardview)
+        val massCardView = findViewById<MaterialCardView>(R.id.home_mass_cardview)
+        val timeCardView = findViewById<MaterialCardView>(R.id.home_time_cardview)
 
         dataDimCardView.setOnClickListener {
-            cleanExtra(intent)
-            intent.putExtra("conversion", "datadim")
-            startActivity(intent)
+            startConverter("datadim", intent)
         }
 
         lengthsCardView.setOnClickListener {
-            cleanExtra(intent)
-            intent.putExtra("conversion", "lengths")
-            startActivity(intent)
+            startConverter("lengths", intent)
         }
 
         velocityCardView.setOnClickListener {
-            cleanExtra(intent)
-            intent.putExtra("conversion", "velocity")
-            startActivity(intent)
+            startConverter("velocity", intent)
         }
 
         temperatureCardView.setOnClickListener {
-            cleanExtra(intent)
-            intent.putExtra("conversion", "temperature")
-            startActivity(intent)
+            startConverter("temperature", intent)
+        }
+
+        massCardView.setOnClickListener {
+            startConverter("mass", intent)
+        }
+
+        timeCardView.setOnClickListener {
+            startConverter("time", intent)
         }
     }
 
     private fun cleanExtra(i: Intent) {
         if (i.hasExtra("conversion")) i.removeExtra("conversion")
+    }
+
+    private fun startConverter(conversion: String, i: Intent) {
+        cleanExtra(i)
+        i.putExtra("conversion", conversion)
+        startActivity(i)
     }
 }

@@ -7,10 +7,7 @@ import android.text.method.DigitsKeyListener
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.md.simpleconverter.converters.DataDimConverter
-import com.md.simpleconverter.converters.LengthsConverter
-import com.md.simpleconverter.converters.TemperatureConverter
-import com.md.simpleconverter.converters.VelocityConverter
+import com.md.simpleconverter.converters.*
 import kotlin.math.round
 
 class ConverterActivity : AppCompatActivity() {
@@ -50,9 +47,15 @@ class ConverterActivity : AppCompatActivity() {
                     if (conversion == "lengths") {
                         (fromEditText.text.toString() + " " + fromSpinner.selectedItem.toString() + "   =   " + convert(fromEditText, fromSpinner, toSpinner, conversion).round(5).toString() + " " + toSpinner.selectedItem.toString())
                             .also { resultTextView.text = it }
+
                     } else if (conversion == "datadim") {
                         (fromEditText.text.toString() + " " + fromSpinner.selectedItem.toString() + "   =   " + convert(fromEditText, fromSpinner, toSpinner, conversion).round(7).toString() + " " + toSpinner.selectedItem.toString())
                             .also { resultTextView.text = it }
+
+                    } else if (conversion == "mass") {
+                        (fromEditText.text.toString() + " " + fromSpinner.selectedItem.toString() + "   =   " + convert(fromEditText, fromSpinner, toSpinner, conversion).round(4).toString() + " " + toSpinner.selectedItem.toString())
+                            .also { resultTextView.text = it }
+
                     } else {
                         (fromEditText.text.toString() + " " + fromSpinner.selectedItem.toString() + "   =   " + convert(fromEditText, fromSpinner, toSpinner, conversion).round(2).toString() + " " + toSpinner.selectedItem.toString())
                             .also { resultTextView.text = it }
@@ -75,8 +78,8 @@ class ConverterActivity : AppCompatActivity() {
                 val spinnerAdapter = ArrayAdapter(this, R.layout.custom_spinner_layout, spinnerData)
                 fromSpinner.adapter = spinnerAdapter
                 toSpinner.adapter = spinnerAdapter
-
             }
+
             "lengths" -> {
                 "Lengths".also { conversionTV.text = it }
 
@@ -85,8 +88,8 @@ class ConverterActivity : AppCompatActivity() {
                 val spinnerAdapter = ArrayAdapter(this, R.layout.custom_spinner_layout, spinnerData)
                 fromSpinner.adapter = spinnerAdapter
                 toSpinner.adapter = spinnerAdapter
-
             }
+
             "velocity" -> {
                 "Velocity".also { conversionTV.text = it }
 
@@ -95,8 +98,8 @@ class ConverterActivity : AppCompatActivity() {
                 val spinnerAdapter = ArrayAdapter(this, R.layout.custom_spinner_layout, spinnerData)
                 fromSpinner.adapter = spinnerAdapter
                 toSpinner.adapter = spinnerAdapter
-
             }
+
             "temperature" -> {
                 "Temperature".also { conversionTV.text = it }
 
@@ -105,7 +108,26 @@ class ConverterActivity : AppCompatActivity() {
                 val spinnerAdapter = ArrayAdapter(this, R.layout.custom_spinner_layout, spinnerData)
                 fromSpinner.adapter = spinnerAdapter
                 toSpinner.adapter = spinnerAdapter
+            }
 
+            "mass" -> {
+                "Mass".also { conversionTV.text = it }
+
+                loadSpinnerArray("mass")
+
+                val spinnerAdapter = ArrayAdapter(this, R.layout.custom_spinner_layout, spinnerData)
+                fromSpinner.adapter = spinnerAdapter
+                toSpinner.adapter = spinnerAdapter
+            }
+
+            "time" -> {
+                "Time".also { conversionTV.text = it }
+
+                loadSpinnerArray("time")
+
+                val spinnerAdapter = ArrayAdapter(this, R.layout.custom_spinner_layout, spinnerData)
+                fromSpinner.adapter = spinnerAdapter
+                toSpinner.adapter = spinnerAdapter
             }
         }
     }
@@ -136,6 +158,14 @@ class ConverterActivity : AppCompatActivity() {
 
             "temperature" -> {
                 spinnerData.addAll(listOf("Celsius", "Fahrenheit", "Kelvin"))
+            }
+
+            "mass" -> {
+                spinnerData.addAll(listOf("T", "Q", "Kg", "hg", "dag", "g", "dg", "cg", "mg", "lb", "oz"))
+            }
+
+            "time" -> {
+                spinnerData.addAll(listOf("Centuries", "Decades", "Years", "Months", "Days", "Hours", "Minutes", "Seconds", "Milliseconds"))
             }
         }
     }
@@ -176,6 +206,14 @@ class ConverterActivity : AppCompatActivity() {
 
             "temperature" -> {
                 result = TemperatureConverter().convert(fet, fromSpinner, toSpinner)
+            }
+
+            "mass" -> {
+                result = MassConverter().convert(fet, fromSpinner, toSpinner)
+            }
+
+            "time" -> {
+                Toast.makeText(this, "WIP", Toast.LENGTH_SHORT).show()
             }
         }
 

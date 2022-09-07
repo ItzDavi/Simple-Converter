@@ -24,11 +24,12 @@
         android:id="@+id/home_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/custom_home_linear_layout"
         android:orientation="horizontal"
         android:paddingHorizontal="10dp"
-        android:layout_marginTop="40dp"
         android:paddingVertical="10dp"
-        android:background="@drawable/custom_home_linear_layout"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/home_textview">
 
@@ -36,10 +37,10 @@
             android:id="@+id/home_datadim_cardview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:layout_weight="0.5"
-            app:cardElevation="7dp"
             app:cardCornerRadius="8dp"
-            android:layout_margin="10dp">
+            app:cardElevation="7dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/datadim_cardview_constraint_layout"
@@ -73,10 +74,10 @@
             android:id="@+id/home_lengths_cardview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:layout_weight="0.5"
-            app:cardElevation="7dp"
             app:cardCornerRadius="8dp"
-            android:layout_margin="10dp">
+            app:cardElevation="7dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/lengths_cardview_constraint_layout"
@@ -96,8 +97,8 @@
                     android:id="@+id/lengths_cardview_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Lengths"
                     android:layout_marginHorizontal="5dp"
+                    android:text="Lengths"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/lengths_cardview_imageview"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -112,11 +113,12 @@
         android:id="@+id/home_linear_layout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/custom_home_linear_layout"
         android:orientation="horizontal"
         android:paddingHorizontal="10dp"
-        android:layout_marginTop="20dp"
         android:paddingVertical="10dp"
-        android:background="@drawable/custom_home_linear_layout"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/home_linear_layout">
 
@@ -124,10 +126,10 @@
             android:id="@+id/home_velocity_cardview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:layout_weight="0.5"
-            app:cardElevation="7dp"
             app:cardCornerRadius="8dp"
-            android:layout_margin="10dp">
+            app:cardElevation="7dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/velocity_cardview_constraint_layout"
@@ -161,10 +163,10 @@
             android:id="@+id/home_temperature_cardview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:layout_weight="0.5"
-            app:cardElevation="7dp"
             app:cardCornerRadius="8dp"
-            android:layout_margin="10dp">
+            app:cardElevation="7dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/temperature_cardview_constraint_layout"
@@ -184,10 +186,99 @@
                     android:id="@+id/temperature_cardview_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Temperature"
                     android:layout_marginHorizontal="5dp"
+                    android:text="Temperature"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/temperature_cardview_imageview"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/home_linear_layout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/custom_home_linear_layout"
+        android:orientation="horizontal"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_linear_layout2">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/home_mass_cardview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="0.5"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="7dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/mass_cardview_constraint_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/mass_cardview_imageview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_launcher"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/mass_cardview_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:text="Mass"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/mass_cardview_imageview"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/home_time_cardview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="0.5"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="7dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/time_cardview_constraint_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/time_cardview_imageview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_launcher"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/time_cardview_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:text="Temperature"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/time_cardview_imageview"
                     app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
