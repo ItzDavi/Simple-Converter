@@ -5,15 +5,18 @@ import android.widget.Spinner
 
 class TemperatureConverter {
 
+    private var fromUnit = ""
+    private var toUnit = ""
+    private var fromValue = 0.0
+    private var result = 0.0
+
+    private val kelvin = 273.15
+
     fun convert(fet: EditText, fromSpinner: Spinner, toSpinner: Spinner, conversionType: String) : Double {
-        val fromUnit = fromSpinner.selectedItem.toString()
-        val toUnit = toSpinner.selectedItem.toString()
+        fromUnit = fromSpinner.selectedItem.toString()
+        toUnit = toSpinner.selectedItem.toString()
 
-        val fromValue = fet.text.toString().toDouble()
-
-        val kelvin = 273.15
-
-        var result = 0.0
+        fromValue = fet.text.toString().toDouble()
 
         if (conversionType == "temperature") {
             //Celsius convert
