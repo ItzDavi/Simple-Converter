@@ -186,17 +186,22 @@ class ConverterActivity : AppCompatActivity() {
 
         var result = 0.0
 
-        if (conversionType == "datadim") {
-            Toast.makeText(this, "WIP", Toast.LENGTH_SHORT).show()
+        when (conversionType) {
+            "datadim" -> {
+                Toast.makeText(this, "WIP", Toast.LENGTH_SHORT).show()
 
-        } else if (conversionType == "lengths") {
-            Toast.makeText(this, "WIP", Toast.LENGTH_SHORT).show()
+            }
+            "lengths" -> {
+                Toast.makeText(this, "WIP", Toast.LENGTH_SHORT).show()
 
-        } else if (conversionType == "velocity") {
-            result = VelocityConverter().convert(fet, fromSpinner, toSpinner)
+            }
+            "velocity" -> {
+                result = VelocityConverter().convert(fet, fromSpinner, toSpinner)
 
-        } else if (conversionType == "temperature") {
-            result = TemperatureConverter().convert(fet, fromSpinner, toSpinner, conversionType)
+            }
+            "temperature" -> {
+                result = TemperatureConverter().convert(fet, fromSpinner, toSpinner, conversionType)
+            }
         }
 
         return result
