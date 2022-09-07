@@ -12,41 +12,38 @@ class TemperatureConverter {
 
     private val kelvin = 273.15
 
-    fun convert(fet: EditText, fromSpinner: Spinner, toSpinner: Spinner, conversionType: String) : Double {
+    fun convert(fet: EditText, fromSpinner: Spinner, toSpinner: Spinner) : Double {
         fromUnit = fromSpinner.selectedItem.toString()
         toUnit = toSpinner.selectedItem.toString()
 
         fromValue = fet.text.toString().toDouble()
 
-        if (conversionType == "temperature") {
-            //Celsius convert
-            if (fromUnit == "Celsius") {
+        if (fromUnit == "Celsius") {
 
-                if (toUnit == "Kelvin") {
-                    result = fromValue + kelvin
+            if (toUnit == "Kelvin") {
+                result = fromValue + kelvin
 
-                } else if (toUnit == "Fahrenheit") {
-                    result = (fromValue * 9 / 5) + 32
-                }
+            } else if (toUnit == "Fahrenheit") {
+                result = (fromValue * 9 / 5) + 32
+            }
 
-                //Kelvin convert
-            } else if (fromUnit == "Kelvin") {
+            //Kelvin convert
+        } else if (fromUnit == "Kelvin") {
 
-                if (toUnit == "Celsius") {
-                    result = fromValue - kelvin
+            if (toUnit == "Celsius") {
+                result = fromValue - kelvin
 
-                } else if (toUnit == "Fahrenheit") {
-                    result = ((fromValue - kelvin) * 9 / 5) + 32
-                }
+            } else if (toUnit == "Fahrenheit") {
+                result = ((fromValue - kelvin) * 9 / 5) + 32
+            }
 
-            } else if (fromUnit == "Fahrenheit") {
+        } else if (fromUnit == "Fahrenheit") {
 
-                if (toUnit == "Celsius") {
-                    result = (fromValue - 32) * 5 / 9
+            if (toUnit == "Celsius") {
+                result = (fromValue - 32) * 5 / 9
 
-                } else if (toUnit == "Kelvin") {
-                    result = ((fromValue - 32) * 5 / 9) + kelvin
-                }
+            } else if (toUnit == "Kelvin") {
+                result = ((fromValue - 32) * 5 / 9) + kelvin
             }
         }
 
