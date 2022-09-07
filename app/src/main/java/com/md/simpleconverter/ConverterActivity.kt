@@ -7,6 +7,7 @@ import android.text.method.DigitsKeyListener
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.md.simpleconverter.converters.DataDimConverter
 import com.md.simpleconverter.converters.LengthsConverter
 import com.md.simpleconverter.converters.TemperatureConverter
 import com.md.simpleconverter.converters.VelocityConverter
@@ -48,6 +49,9 @@ class ConverterActivity : AppCompatActivity() {
 
                     if (conversion == "lengths") {
                         (fromEditText.text.toString() + " " + fromSpinner.selectedItem.toString() + "   =   " + convert(fromEditText, fromSpinner, toSpinner, conversion).round(5).toString() + " " + toSpinner.selectedItem.toString())
+                            .also { resultTextView.text = it }
+                    } else if (conversion == "datadim") {
+                        (fromEditText.text.toString() + " " + fromSpinner.selectedItem.toString() + "   =   " + convert(fromEditText, fromSpinner, toSpinner, conversion).round(7).toString() + " " + toSpinner.selectedItem.toString())
                             .also { resultTextView.text = it }
                     } else {
                         (fromEditText.text.toString() + " " + fromSpinner.selectedItem.toString() + "   =   " + convert(fromEditText, fromSpinner, toSpinner, conversion).round(2).toString() + " " + toSpinner.selectedItem.toString())
@@ -159,17 +163,17 @@ class ConverterActivity : AppCompatActivity() {
 
         when (conversionType) {
             "datadim" -> {
-                Toast.makeText(this, "WIP", Toast.LENGTH_SHORT).show()
-
+                result = DataDimConverter().convert(fet, fromSpinner, toSpinner)
             }
+
             "lengths" -> {
                 result = LengthsConverter().convert(fet, fromSpinner, toSpinner)
-
             }
+
             "velocity" -> {
                 result = VelocityConverter().convert(fet, fromSpinner, toSpinner)
-
             }
+
             "temperature" -> {
                 result = TemperatureConverter().convert(fet, fromSpinner, toSpinner)
             }
