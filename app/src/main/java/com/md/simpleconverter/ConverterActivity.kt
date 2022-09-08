@@ -44,21 +44,26 @@ class ConverterActivity : AppCompatActivity() {
                 if (checkInputs(fromEditText, fromSpinner, toSpinner)) {
                     resultTextView.visibility = View.VISIBLE
 
-                    if (conversion == "lengths") {
-                        (fromEditText.text.toString() + " " + fromSpinner.selectedItem.toString() + "   =   " + convert(fromEditText, fromSpinner, toSpinner, conversion).round(5).toString() + " " + toSpinner.selectedItem.toString())
-                            .also { resultTextView.text = it }
+                    when (conversion) {
+                        "lengths" -> {
+                            (fromEditText.text.toString() + " " + fromSpinner.selectedItem.toString() + "   =   " + convert(fromEditText, fromSpinner, toSpinner, conversion).round(5).toString() + " " + toSpinner.selectedItem.toString())
+                                .also { resultTextView.text = it }
 
-                    } else if (conversion == "datadim") {
-                        (fromEditText.text.toString() + " " + fromSpinner.selectedItem.toString() + "   =   " + convert(fromEditText, fromSpinner, toSpinner, conversion).round(7).toString() + " " + toSpinner.selectedItem.toString())
-                            .also { resultTextView.text = it }
+                        }
+                        "datadim" -> {
+                            (fromEditText.text.toString() + " " + fromSpinner.selectedItem.toString() + "   =   " + convert(fromEditText, fromSpinner, toSpinner, conversion).round(7).toString() + " " + toSpinner.selectedItem.toString())
+                                .also { resultTextView.text = it }
 
-                    } else if (conversion == "mass") {
-                        (fromEditText.text.toString() + " " + fromSpinner.selectedItem.toString() + "   =   " + convert(fromEditText, fromSpinner, toSpinner, conversion).round(4).toString() + " " + toSpinner.selectedItem.toString())
-                            .also { resultTextView.text = it }
+                        }
+                        "mass" -> {
+                            (fromEditText.text.toString() + " " + fromSpinner.selectedItem.toString() + "   =   " + convert(fromEditText, fromSpinner, toSpinner, conversion).round(4).toString() + " " + toSpinner.selectedItem.toString())
+                                .also { resultTextView.text = it }
 
-                    } else {
-                        (fromEditText.text.toString() + " " + fromSpinner.selectedItem.toString() + "   =   " + convert(fromEditText, fromSpinner, toSpinner, conversion).round(2).toString() + " " + toSpinner.selectedItem.toString())
-                            .also { resultTextView.text = it }
+                        }
+                        else -> {
+                            (fromEditText.text.toString() + " " + fromSpinner.selectedItem.toString() + "   =   " + convert(fromEditText, fromSpinner, toSpinner, conversion).round(2).toString() + " " + toSpinner.selectedItem.toString())
+                                .also { resultTextView.text = it }
+                        }
                     }
                 }
             }
@@ -72,62 +77,38 @@ class ConverterActivity : AppCompatActivity() {
         when (conversion) {
             "datadim" -> {
                 "Data Dimension".also { conversionTV.text = it }
-
                 loadSpinnerArray("datadim")
-
-                val spinnerAdapter = ArrayAdapter(this, R.layout.custom_spinner_layout, spinnerData)
-                fromSpinner.adapter = spinnerAdapter
-                toSpinner.adapter = spinnerAdapter
+                initSpinners(fromSpinner, toSpinner)
             }
 
             "lengths" -> {
                 "Lengths".also { conversionTV.text = it }
-
                 loadSpinnerArray("lengths")
-
-                val spinnerAdapter = ArrayAdapter(this, R.layout.custom_spinner_layout, spinnerData)
-                fromSpinner.adapter = spinnerAdapter
-                toSpinner.adapter = spinnerAdapter
+                initSpinners(fromSpinner, toSpinner)
             }
 
             "velocity" -> {
                 "Velocity".also { conversionTV.text = it }
-
                 loadSpinnerArray("velocity")
-
-                val spinnerAdapter = ArrayAdapter(this, R.layout.custom_spinner_layout, spinnerData)
-                fromSpinner.adapter = spinnerAdapter
-                toSpinner.adapter = spinnerAdapter
+                initSpinners(fromSpinner, toSpinner)
             }
 
             "temperature" -> {
                 "Temperature".also { conversionTV.text = it }
-
                 loadSpinnerArray("temperature")
-
-                val spinnerAdapter = ArrayAdapter(this, R.layout.custom_spinner_layout, spinnerData)
-                fromSpinner.adapter = spinnerAdapter
-                toSpinner.adapter = spinnerAdapter
+                initSpinners(fromSpinner, toSpinner)
             }
 
             "mass" -> {
                 "Mass".also { conversionTV.text = it }
-
                 loadSpinnerArray("mass")
-
-                val spinnerAdapter = ArrayAdapter(this, R.layout.custom_spinner_layout, spinnerData)
-                fromSpinner.adapter = spinnerAdapter
-                toSpinner.adapter = spinnerAdapter
+                initSpinners(fromSpinner, toSpinner)
             }
 
             "time" -> {
                 "Time".also { conversionTV.text = it }
-
                 loadSpinnerArray("time")
-
-                val spinnerAdapter = ArrayAdapter(this, R.layout.custom_spinner_layout, spinnerData)
-                fromSpinner.adapter = spinnerAdapter
-                toSpinner.adapter = spinnerAdapter
+                initSpinners(fromSpinner, toSpinner)
             }
         }
     }
@@ -137,6 +118,11 @@ class ConverterActivity : AppCompatActivity() {
         fet.keyListener = DigitsKeyListener.getInstance("0123456789,")
     }
 
+    private fun initSpinners(fs: Spinner, ts: Spinner) {
+        val adapter = ArrayAdapter(this, R.layout.custom_spinner_layout, spinnerData)
+        fs.adapter = adapter
+        ts.adapter = adapter
+    }
 
     private fun loadSpinnerArray(conversionType: String) {
         if (spinnerData.isNotEmpty()) {
