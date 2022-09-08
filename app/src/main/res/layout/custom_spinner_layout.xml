@@ -5,6 +5,7 @@
     android:text="Item"
     android:ellipsize="end"
     android:maxLines="1"
+    android:textColor="@color/white"
     android:paddingHorizontal="8dp"
     android:paddingVertical="6dp">
 </TextView>

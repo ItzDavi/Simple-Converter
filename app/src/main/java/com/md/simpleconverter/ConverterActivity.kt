@@ -7,6 +7,8 @@ import android.text.method.DigitsKeyListener
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import com.google.android.material.card.MaterialCardView
 import com.md.simpleconverter.converters.*
 import kotlin.math.round
 
@@ -22,6 +24,11 @@ class ConverterActivity : AppCompatActivity() {
         val convertButton = findViewById<Button>(R.id.convert_button)
 
         val resultTextView = findViewById<TextView>(R.id.conversion_result_textview)
+        val resultCardView = findViewById<MaterialCardView>(R.id.result_cardview)
+
+        val titleConstraintLayout = findViewById<ConstraintLayout>(R.id.title_constraint_layout)
+        val fromCardView = findViewById<MaterialCardView>(R.id.from_cardview_layout)
+        val toCardView = findViewById<MaterialCardView>(R.id.to_cardview_layout)
 
         val fromSpinner = findViewById<Spinner>(R.id.from_spinner)
         val toSpinner = findViewById<Spinner>(R.id.to_spinner)
@@ -40,9 +47,11 @@ class ConverterActivity : AppCompatActivity() {
         if (conversion != null) {
             start(conversion, conversionTextView, fromSpinner, toSpinner)
 
+            changeColors(titleConstraintLayout, fromCardView, toCardView, fromSpinner, toSpinner, conversion)
+
             convertButton.setOnClickListener {
                 if (checkInputs(fromEditText, fromSpinner, toSpinner)) {
-                    resultTextView.visibility = View.VISIBLE
+                    resultCardView.visibility = View.VISIBLE
 
                     when (conversion) {
                         "lengths" -> {
@@ -70,6 +79,84 @@ class ConverterActivity : AppCompatActivity() {
 
         } else {
             Toast.makeText(this, "Failed getting intents from Main Activity", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun changeColors(layout: ConstraintLayout, fromCardView: MaterialCardView, toCardView: MaterialCardView, fromSpinner: Spinner, toSpinner: Spinner, conversion: String) {
+        val rootLayout = findViewById<ConstraintLayout>(R.id.root_layout)
+        rootLayout.setBackgroundColor(getColor(R.color.white))
+
+        when (conversion) {
+            "datadim" -> {
+                layout.background.setTint(getColor(R.color.yellow_folder_icon))
+                fromCardView.setCardBackgroundColor(getColor(R.color.yellow_folder_icon))
+                toCardView.setCardBackgroundColor(getColor(R.color.yellow_folder_icon))
+
+                fromSpinner.popupBackground.setTint(getColor(R.color.yellow_folder_icon))
+                toSpinner.popupBackground.setTint(getColor(R.color.yellow_folder_icon))
+
+                window.statusBarColor = getColor(R.color.yellow_folder_icon)
+            }
+
+            "lengths" -> {
+                layout.background.setTint(getColor(R.color.red_tape_icon))
+
+                fromCardView.setCardBackgroundColor(getColor(R.color.red_tape_icon))
+                toCardView.setCardBackgroundColor(getColor(R.color.red_tape_icon))
+
+                fromSpinner.popupBackground.setTint(getColor(R.color.red_tape_icon))
+                toSpinner.popupBackground.setTint(getColor(R.color.red_tape_icon))
+
+                window.statusBarColor = getColor(R.color.red_tape_icon)
+            }
+
+            "velocity" -> {
+                layout.background.setTint(getColor(R.color.yellow_folder_icon))
+
+                fromCardView.setCardBackgroundColor(getColor(R.color.yellow_folder_icon))
+                toCardView.setCardBackgroundColor(getColor(R.color.yellow_folder_icon))
+
+                fromSpinner.popupBackground.setTint(getColor(R.color.yellow_folder_icon))
+                toSpinner.popupBackground.setTint(getColor(R.color.yellow_folder_icon))
+
+                window.statusBarColor = getColor(R.color.yellow_folder_icon)
+            }
+
+            "temperature" -> {
+                layout.background.setTint(getColor(R.color.red_tape_icon))
+
+                fromCardView.setCardBackgroundColor(getColor(R.color.red_tape_icon))
+                toCardView.setCardBackgroundColor(getColor(R.color.red_tape_icon))
+
+                fromSpinner.popupBackground.setTint(getColor(R.color.red_tape_icon))
+                toSpinner.popupBackground.setTint(getColor(R.color.red_tape_icon))
+
+                window.statusBarColor = getColor(R.color.red_tape_icon)
+            }
+
+            "mass" -> {
+                layout.background.setTint(getColor(R.color.yellow_folder_icon))
+
+                fromCardView.setCardBackgroundColor(getColor(R.color.yellow_folder_icon))
+                toCardView.setCardBackgroundColor(getColor(R.color.yellow_folder_icon))
+
+                fromSpinner.popupBackground.setTint(getColor(R.color.yellow_folder_icon))
+                toSpinner.popupBackground.setTint(getColor(R.color.yellow_folder_icon))
+
+                window.statusBarColor = getColor(R.color.yellow_folder_icon)
+            }
+
+            "time" -> {
+                layout.background.setTint(getColor(R.color.red_tape_icon))
+
+                fromCardView.setCardBackgroundColor(getColor(R.color.red_tape_icon))
+                toCardView.setCardBackgroundColor(getColor(R.color.red_tape_icon))
+
+                fromSpinner.popupBackground.setTint(getColor(R.color.red_tape_icon))
+                toSpinner.popupBackground.setTint(getColor(R.color.red_tape_icon))
+
+                window.statusBarColor = getColor(R.color.red_tape_icon)
+            }
         }
     }
 
