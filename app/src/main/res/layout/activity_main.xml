@@ -49,9 +49,10 @@
 
                 <ImageView
                     android:id="@+id/datadim_cardview_imageview"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_launcher"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@drawable/gallery"
+                    android:layout_margin="5dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -86,9 +87,10 @@
 
                 <ImageView
                     android:id="@+id/lengths_cardview_imageview"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_launcher"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@drawable/measuring_tape"
+                    android:layout_margin="5dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -138,9 +140,10 @@
 
                 <ImageView
                     android:id="@+id/velocity_cardview_imageview"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_launcher"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@drawable/velocity"
+                    android:layout_margin="5dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -175,9 +178,10 @@
 
                 <ImageView
                     android:id="@+id/temperature_cardview_imageview"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_launcher"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@drawable/thermometer"
+                    android:layout_margin="5dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -227,9 +231,10 @@
 
                 <ImageView
                     android:id="@+id/mass_cardview_imageview"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_launcher"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@drawable/weight_scale"
+                    android:layout_margin="5dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -264,9 +269,10 @@
 
                 <ImageView
                     android:id="@+id/time_cardview_imageview"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_launcher"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@drawable/schedule"
+                    android:layout_margin="5dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
