@@ -1,5 +1,6 @@
 package com.md.simpleconverter
 
+import android.graphics.Color
 import android.os.Bundle
 import android.text.InputType
 import android.text.TextUtils
@@ -83,81 +84,30 @@ class ConverterActivity : AppCompatActivity() {
     }
 
     private fun changeColors(layout: ConstraintLayout, fromCardView: MaterialCardView, toCardView: MaterialCardView, fromSpinner: Spinner, toSpinner: Spinner, conversion: String) {
+
         val rootLayout = findViewById<ConstraintLayout>(R.id.root_layout)
         rootLayout.setBackgroundColor(getColor(R.color.white))
 
-        when (conversion) {
-            "datadim" -> {
-                layout.background.setTint(getColor(R.color.yellow_folder_icon))
-                fromCardView.setCardBackgroundColor(getColor(R.color.yellow_folder_icon))
-                toCardView.setCardBackgroundColor(getColor(R.color.yellow_folder_icon))
+        val colors = arrayOf(
+            getColor(R.color.red_tape_icon),
+            getColor(R.color.blue),
+            getColor(R.color.yellow_folder_icon),
+            getColor(R.color.purple)
+        )
 
-                fromSpinner.popupBackground.setTint(getColor(R.color.yellow_folder_icon))
-                toSpinner.popupBackground.setTint(getColor(R.color.yellow_folder_icon))
+        window.clearFlags(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)
 
-                window.statusBarColor = getColor(R.color.yellow_folder_icon)
-            }
+        val randomColor = colors.random()
 
-            "lengths" -> {
-                layout.background.setTint(getColor(R.color.red_tape_icon))
+        layout.background.setTint(randomColor)
 
-                fromCardView.setCardBackgroundColor(getColor(R.color.red_tape_icon))
-                toCardView.setCardBackgroundColor(getColor(R.color.red_tape_icon))
+        fromCardView.setCardBackgroundColor(randomColor)
+        toCardView.setCardBackgroundColor(randomColor)
 
-                fromSpinner.popupBackground.setTint(getColor(R.color.red_tape_icon))
-                toSpinner.popupBackground.setTint(getColor(R.color.red_tape_icon))
+        fromSpinner.popupBackground.setTint(randomColor)
+        toSpinner.popupBackground.setTint(randomColor)
 
-                window.statusBarColor = getColor(R.color.red_tape_icon)
-            }
-
-            "velocity" -> {
-                layout.background.setTint(getColor(R.color.yellow_folder_icon))
-
-                fromCardView.setCardBackgroundColor(getColor(R.color.yellow_folder_icon))
-                toCardView.setCardBackgroundColor(getColor(R.color.yellow_folder_icon))
-
-                fromSpinner.popupBackground.setTint(getColor(R.color.yellow_folder_icon))
-                toSpinner.popupBackground.setTint(getColor(R.color.yellow_folder_icon))
-
-                window.statusBarColor = getColor(R.color.yellow_folder_icon)
-            }
-
-            "temperature" -> {
-                layout.background.setTint(getColor(R.color.red_tape_icon))
-
-                fromCardView.setCardBackgroundColor(getColor(R.color.red_tape_icon))
-                toCardView.setCardBackgroundColor(getColor(R.color.red_tape_icon))
-
-                fromSpinner.popupBackground.setTint(getColor(R.color.red_tape_icon))
-                toSpinner.popupBackground.setTint(getColor(R.color.red_tape_icon))
-
-                window.statusBarColor = getColor(R.color.red_tape_icon)
-            }
-
-            "mass" -> {
-                layout.background.setTint(getColor(R.color.yellow_folder_icon))
-
-                fromCardView.setCardBackgroundColor(getColor(R.color.yellow_folder_icon))
-                toCardView.setCardBackgroundColor(getColor(R.color.yellow_folder_icon))
-
-                fromSpinner.popupBackground.setTint(getColor(R.color.yellow_folder_icon))
-                toSpinner.popupBackground.setTint(getColor(R.color.yellow_folder_icon))
-
-                window.statusBarColor = getColor(R.color.yellow_folder_icon)
-            }
-
-            "time" -> {
-                layout.background.setTint(getColor(R.color.red_tape_icon))
-
-                fromCardView.setCardBackgroundColor(getColor(R.color.red_tape_icon))
-                toCardView.setCardBackgroundColor(getColor(R.color.red_tape_icon))
-
-                fromSpinner.popupBackground.setTint(getColor(R.color.red_tape_icon))
-                toSpinner.popupBackground.setTint(getColor(R.color.red_tape_icon))
-
-                window.statusBarColor = getColor(R.color.red_tape_icon)
-            }
-        }
+        window.statusBarColor = randomColor
     }
 
     private fun start(conversion: String, conversionTV: TextView, fromSpinner: Spinner, toSpinner: Spinner) {
@@ -234,7 +184,7 @@ class ConverterActivity : AppCompatActivity() {
             }
 
             "mass" -> {
-                spinnerData.addAll(listOf("T", "Q", "Kg", "hg", "dag", "g", "dg", "cg", "mg", "lb", "oz"))
+                spinnerData.addAll(listOf("tons", "quints", "Kg", "hg", "dag", "g", "dg", "cg", "mg", "lb", "oz"))
             }
 
             "time" -> {

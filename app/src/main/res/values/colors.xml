@@ -7,12 +7,13 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="soft_white">#FBFAF5</color>
     <color name="blue">#47AAFA</color>
     <color name="red">#F86055</color>
     <color name="yellow">#FAEC70</color>
     <color name="green">#5BB55F</color>
     <color name="gray">#979797</color>
-    <color name="yellow_folder_icon">#FDB441</color>
+    <color name="yellow_folder_icon">#FDC060</color>
     <color name="red_tape_icon">#FD4755</color>
-    <color name="red_calendar_icon">#FF4155</color>
+    <color name="purple">#9C27B0</color>
 </resources>

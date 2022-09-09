@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/soft_white"
     tools:context=".MainActivity">
 
     <TextView
@@ -13,12 +14,20 @@
         android:text="Simple Converter"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/settings_imageview"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/ic_round_settings_24"
+        app:tint="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/home_linear_layout"
@@ -51,8 +60,8 @@
                     android:id="@+id/datadim_cardview_imageview"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:src="@drawable/gallery"
                     android:layout_margin="10dp"
+                    android:src="@drawable/gallery"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -89,8 +98,8 @@
                     android:id="@+id/lengths_cardview_imageview"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:src="@drawable/measuring_tape"
                     android:layout_margin="10dp"
+                    android:src="@drawable/measuring_tape"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -141,8 +150,8 @@
                     android:id="@+id/velocity_cardview_imageview"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:src="@drawable/velocity"
                     android:layout_margin="10dp"
+                    android:src="@drawable/velocity"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -179,8 +188,8 @@
                     android:id="@+id/temperature_cardview_imageview"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:src="@drawable/thermometer"
                     android:layout_margin="10dp"
+                    android:src="@drawable/thermometer"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -231,8 +240,8 @@
                     android:id="@+id/mass_cardview_imageview"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:src="@drawable/weight_scale"
                     android:layout_margin="10dp"
+                    android:src="@drawable/weight_scale"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -269,8 +278,8 @@
                     android:id="@+id/time_cardview_imageview"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:src="@drawable/schedule"
                     android:layout_margin="10dp"
+                    android:src="@drawable/schedule"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ConverterActivity"
+    android:background="@color/soft_white"
     android:id="@+id/root_layout">
 
     <LinearLayout
@@ -27,7 +28,7 @@
                 android:id="@+id/back_button_imageview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="20dp"
                 android:src="@drawable/ic_round_arrow_back_ios_new_24"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -100,9 +101,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.8"
+                    android:paddingVertical="5dp"
                     android:maxLines="1"
+                    android:background="@drawable/custom_converter_edittext"
                     android:textColor="@color/white"
-                    android:backgroundTint="@color/white"
                     android:textSize="14sp" />
 
                 <Spinner
@@ -110,6 +112,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.3"
+                    android:layout_marginTop="3dp"
                     android:backgroundTint="@color/white"
                     android:spinnerMode="dropdown" />
 
@@ -156,6 +159,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_weight="0.3"
+                android:layout_marginTop="5dp"
                 android:backgroundTint="@color/white"
                 android:popupBackground="@color/white"
                 android:spinnerMode="dropdown"
