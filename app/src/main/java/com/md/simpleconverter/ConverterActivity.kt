@@ -48,7 +48,7 @@ class ConverterActivity : AppCompatActivity() {
         if (conversion != null) {
             start(conversion, conversionTextView, fromSpinner, toSpinner)
 
-            changeColors(titleConstraintLayout, fromCardView, toCardView, fromSpinner, toSpinner, conversion)
+            changeRandomColors(titleConstraintLayout, fromCardView, toCardView, fromSpinner, toSpinner, conversion)
 
             convertButton.setOnClickListener {
                 if (checkInputs(fromEditText, fromSpinner, toSpinner)) {
@@ -83,10 +83,10 @@ class ConverterActivity : AppCompatActivity() {
         }
     }
 
-    private fun changeColors(layout: ConstraintLayout, fromCardView: MaterialCardView, toCardView: MaterialCardView, fromSpinner: Spinner, toSpinner: Spinner, conversion: String) {
+    private fun changeRandomColors(layout: ConstraintLayout, fromCardView: MaterialCardView, toCardView: MaterialCardView, fromSpinner: Spinner, toSpinner: Spinner, conversion: String) {
 
         val rootLayout = findViewById<ConstraintLayout>(R.id.root_layout)
-        rootLayout.setBackgroundColor(getColor(R.color.white))
+        rootLayout.setBackgroundColor(getColor(R.color.soft_white))
 
         val colors = arrayOf(
             getColor(R.color.red_tape_icon),

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.WindowInsetsController
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.net.toUri
 import com.google.android.material.card.MaterialCardView
@@ -31,6 +32,8 @@ class MainActivity : AppCompatActivity() {
         val massCardView = findViewById<MaterialCardView>(R.id.home_mass_cardview)
         val timeCardView = findViewById<MaterialCardView>(R.id.home_time_cardview)
 
+        val settingsImageView = findViewById<ImageView>(R.id.settings_imageview)
+
         dataDimCardView.setOnClickListener {
             startConverter("datadim", intent)
         }
@@ -53,6 +56,14 @@ class MainActivity : AppCompatActivity() {
 
         timeCardView.setOnClickListener {
             startConverter("time", intent)
+        }
+
+        settingsImageView.setOnClickListener {
+            val settingsIntent = Intent(this, SettingsActivity::class.java)
+
+            if (settingsIntent.hasExtra("conversion")) settingsIntent.removeExtra("conversion")
+
+            startActivity(settingsIntent)
         }
     }
 

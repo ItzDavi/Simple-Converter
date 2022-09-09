@@ -20,8 +20,7 @@
             android:id="@+id/title_constraint_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:paddingTop="3dp"
+            android:paddingBottom="7dp"
             android:background="@drawable/custom_title_cardview_background">
 
             <ImageView
@@ -29,6 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="7dp"
                 android:src="@drawable/ic_round_arrow_back_ios_new_24"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -42,6 +42,8 @@
                 android:textSize="20sp"
                 android:textColor="@color/white"
                 android:textStyle="bold"
+                android:layout_marginTop="7dp"
+
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
