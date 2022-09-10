@@ -96,6 +96,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:visibility="gone"
         android:layout_marginHorizontal="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -131,8 +132,8 @@
                     android:layout_weight="0.25"
                     android:layout_height="64dp"
                     android:layout_margin="10dp"
-                    app:civ_border_width="1dp"
-                    app:civ_border_color="@color/gray"
+                    app:civ_border_color="@color/black"
+                    android:clickable="true"
                     android:src="@color/yellow_folder_icon"/>
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -141,8 +142,8 @@
                     android:layout_weight="0.25"
                     android:layout_height="64dp"
                     android:layout_margin="10dp"
-                    app:civ_border_width="1dp"
                     app:civ_border_color="@color/black"
+                    android:clickable="true"
                     android:src="@color/blue"/>
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -151,8 +152,8 @@
                     android:layout_weight="0.25"
                     android:layout_height="64dp"
                     android:layout_margin="10dp"
-                    app:civ_border_width="1dp"
                     app:civ_border_color="@color/black"
+                    android:clickable="true"
                     android:src="@color/red_tape_icon"/>
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -161,8 +162,8 @@
                     android:layout_weight="0.25"
                     android:layout_height="64dp"
                     android:layout_margin="10dp"
-                    app:civ_border_width="1dp"
                     app:civ_border_color="@color/black"
+                    android:clickable="true"
                     android:src="@color/purple"/>
 
             </LinearLayout>

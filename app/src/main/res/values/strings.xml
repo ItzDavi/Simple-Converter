@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Simple Converter</string>
+    <string name="random_theme">true</string>
+    <string name="fixed_theme">false</string>
+    <!-- 0 - RED, 1 - BLUE, 2 - YELLOW, 3 - PURPLE, -1 - DEFAULT NO FIXED -->
+    <string name="theme_color">0</string>
 </resources>

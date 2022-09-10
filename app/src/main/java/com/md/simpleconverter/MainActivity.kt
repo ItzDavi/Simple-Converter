@@ -7,8 +7,6 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowInsetsController
 import android.widget.ImageView
-import android.widget.Toast
-import androidx.core.net.toUri
 import com.google.android.material.card.MaterialCardView
 
 class MainActivity : AppCompatActivity() {
