@@ -58,9 +58,9 @@ class SettingsActivity : AppCompatActivity() {
         window.clearFlags(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)
 
         val colors = arrayOf(
-            getColor(R.color.red_tape_icon),
-            getColor(R.color.blue),
             getColor(R.color.yellow_folder_icon),
+            getColor(R.color.blue),
+            getColor(R.color.red_tape_icon),
             getColor(R.color.purple)
         )
 
@@ -69,17 +69,11 @@ class SettingsActivity : AppCompatActivity() {
             window.statusBarColor = randomColor
             layout.background.setTint(randomColor)
 
-            Log.d("randomThemeInfo", "$randomTheme *** $themeColor *** $randomColor")
-
         } else if (!randomTheme) {
             val color = colors[themeColor]
             window.statusBarColor = color
             layout.background.setTint(color)
-
-            Log.d("fixedThemeInfo", "$randomTheme *** $themeColor *** $color")
         }
-
-        Log.d("themeInfo", "$randomTheme *** $themeColor")
     }
 
     private fun manageRadioButtons(sharedPref: SharedPreferences, radioGroup: RadioGroup, randomRadioButton: RadioButton, fixedRadioButton: RadioButton, colorsLayout: LinearLayout) {
@@ -122,30 +116,23 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         yellowColor.setOnClickListener {
-            val colorChoice = sharedPref.getInt("theme_color", 3)
-            ThemeUtils().manageSettingsColors(yellowColor, blueColor, redColor, purpleColor, sharedPref, colorChoice)
+            ThemeUtils().manageSettingsColors(yellowColor, blueColor, redColor, purpleColor, sharedPref, 0)
             changeRandomColors(titleLayout, sharedPref)
         }
 
         blueColor.setOnClickListener {
-            val colorChoice = sharedPref.getInt("theme_color", 3)
-            ThemeUtils().manageSettingsColors(yellowColor, blueColor, redColor, purpleColor, sharedPref, colorChoice)
+            ThemeUtils().manageSettingsColors(yellowColor, blueColor, redColor, purpleColor, sharedPref, 1)
             changeRandomColors(titleLayout, sharedPref)
         }
 
         redColor.setOnClickListener {
-            val colorChoice = sharedPref.getInt("theme_color", 3)
-            ThemeUtils().manageSettingsColors(yellowColor, blueColor, redColor, purpleColor, sharedPref, colorChoice)
+            ThemeUtils().manageSettingsColors(yellowColor, blueColor, redColor, purpleColor, sharedPref, 2)
             changeRandomColors(titleLayout, sharedPref)
         }
 
         purpleColor.setOnClickListener {
-            val colorChoice = sharedPref.getInt("theme_color", 3)
-            ThemeUtils().manageSettingsColors(yellowColor, blueColor, redColor, purpleColor, sharedPref, colorChoice)
+            ThemeUtils().manageSettingsColors(yellowColor, blueColor, redColor, purpleColor, sharedPref, 3)
             changeRandomColors(titleLayout, sharedPref)
         }
-
-        val colorChoice = sharedPref.getInt("theme_color", 3)
-        ThemeUtils().manageSettingsColors(yellowColor, blueColor, redColor, purpleColor, sharedPref, colorChoice)
     }
 }

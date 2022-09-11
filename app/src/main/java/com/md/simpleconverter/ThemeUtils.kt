@@ -9,13 +9,13 @@ class ThemeUtils {
         val editor = sharedPref.edit()
 
         when (colorChoice) {
-            2 -> {
+            0 -> {
                 color1.borderWidth = 5
                 color2.borderWidth = 0
                 color3.borderWidth = 0
                 color4.borderWidth = 0
 
-                editor.putInt("theme_color", 2)
+                editor.putInt("theme_color", 0)
                 editor.apply()
             }
 
@@ -29,13 +29,13 @@ class ThemeUtils {
                 editor.apply()
             }
 
-            0 -> {
+            2 -> {
                 color1.borderWidth = 0
                 color2.borderWidth = 0
                 color3.borderWidth = 5
                 color4.borderWidth = 0
 
-                editor.putInt("theme_color", 0)
+                editor.putInt("theme_color", 2)
                 editor.apply()
             }
 
