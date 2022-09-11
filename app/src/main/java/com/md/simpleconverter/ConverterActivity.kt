@@ -1,5 +1,6 @@
 package com.md.simpleconverter
 
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import android.text.InputType
@@ -34,6 +35,8 @@ class ConverterActivity : AppCompatActivity() {
         val fromSpinner = findViewById<Spinner>(R.id.from_spinner)
         val toSpinner = findViewById<Spinner>(R.id.to_spinner)
 
+        val sharedPreferences = getSharedPreferences("com.md.simpleconverter", MODE_PRIVATE)
+
         val backButton = findViewById<ImageView>(R.id.back_button_imageview)
         backButton.setOnClickListener {
             finish()
@@ -48,7 +51,7 @@ class ConverterActivity : AppCompatActivity() {
         if (conversion != null) {
             start(conversion, conversionTextView, fromSpinner, toSpinner)
 
-            changeRandomColors(titleConstraintLayout, fromCardView, toCardView, fromSpinner, toSpinner, conversion)
+            changeRandomColors(titleConstraintLayout, fromCardView, toCardView, fromSpinner, toSpinner, conversion, sharedPreferences)
 
             convertButton.setOnClickListener {
                 if (checkInputs(fromEditText, fromSpinner, toSpinner)) {
@@ -70,6 +73,10 @@ class ConverterActivity : AppCompatActivity() {
                                 .also { resultTextView.text = it }
 
                         }
+                        "frequency" -> {
+                            (fromEditText.text.toString() + " " + fromSpinner.selectedItem.toString() + "   =   " + convert(fromEditText, fromSpinner, toSpinner, conversion).round(7).toString() + " " + toSpinner.selectedItem.toString())
+                                .also { resultTextView.text = it }
+                        }
                         else -> {
                             (fromEditText.text.toString() + " " + fromSpinner.selectedItem.toString() + "   =   " + convert(fromEditText, fromSpinner, toSpinner, conversion).round(2).toString() + " " + toSpinner.selectedItem.toString())
                                 .also { resultTextView.text = it }
@@ -83,31 +90,45 @@ class ConverterActivity : AppCompatActivity() {
         }
     }
 
-    private fun changeRandomColors(layout: ConstraintLayout, fromCardView: MaterialCardView, toCardView: MaterialCardView, fromSpinner: Spinner, toSpinner: Spinner, conversion: String) {
+    private fun changeRandomColors(layout: ConstraintLayout, fromCardView: MaterialCardView, toCardView: MaterialCardView, fromSpinner: Spinner, toSpinner: Spinner, conversion: String, sharedPref: SharedPreferences) {
 
         val rootLayout = findViewById<ConstraintLayout>(R.id.root_layout)
         rootLayout.setBackgroundColor(getColor(R.color.soft_white))
 
+        val randomTheme = sharedPref.getBoolean("random_theme", true)
+        val themeColor = sharedPref.getInt("theme_color", 0)
+
         val colors = arrayOf(
-            getColor(R.color.red_tape_icon),
-            getColor(R.color.blue),
             getColor(R.color.yellow_folder_icon),
+            getColor(R.color.blue),
+            getColor(R.color.red_tape_icon),
             getColor(R.color.purple)
         )
 
         window.clearFlags(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)
 
-        val randomColor = colors.random()
+        if (randomTheme) {
+            val randomColor = colors.random()
+            window.statusBarColor = randomColor
+            layout.background.setTint(randomColor)
 
-        layout.background.setTint(randomColor)
+            fromCardView.setCardBackgroundColor(randomColor)
+            toCardView.setCardBackgroundColor(randomColor)
 
-        fromCardView.setCardBackgroundColor(randomColor)
-        toCardView.setCardBackgroundColor(randomColor)
+            fromSpinner.popupBackground.setTint(randomColor)
+            toSpinner.popupBackground.setTint(randomColor)
 
-        fromSpinner.popupBackground.setTint(randomColor)
-        toSpinner.popupBackground.setTint(randomColor)
+        } else if (!randomTheme) {
+            val color = colors[themeColor]
+            window.statusBarColor = color
+            layout.background.setTint(color)
 
-        window.statusBarColor = randomColor
+            fromCardView.setCardBackgroundColor(color)
+            toCardView.setCardBackgroundColor(color)
+
+            fromSpinner.popupBackground.setTint(color)
+            toSpinner.popupBackground.setTint(color)
+        }
     }
 
     private fun start(conversion: String, conversionTV: TextView, fromSpinner: Spinner, toSpinner: Spinner) {
@@ -145,6 +166,12 @@ class ConverterActivity : AppCompatActivity() {
             "time" -> {
                 "Time".also { conversionTV.text = it }
                 loadSpinnerArray("time")
+                initSpinners(fromSpinner, toSpinner)
+            }
+
+            "frequency" -> {
+                "Frequency".also { conversionTV.text = it }
+                loadSpinnerArray("frequency")
                 initSpinners(fromSpinner, toSpinner)
             }
         }
@@ -189,6 +216,14 @@ class ConverterActivity : AppCompatActivity() {
 
             "time" -> {
                 spinnerData.addAll(listOf("Centuries", "Decades", "Years", "Months", "Days", "Hours", "Minutes", "Seconds", "Milliseconds"))
+            }
+
+            "frequency" -> {
+                spinnerData.addAll(listOf("Hertz", "Kilohertz", "Megahertz", "Gigahertz"))
+            }
+
+            "consumption" -> {
+                spinnerData.addAll(listOf("US mpg", "Imp mpg", "km/L", "L/100km"))
             }
         }
     }
@@ -237,6 +272,14 @@ class ConverterActivity : AppCompatActivity() {
 
             "time" -> {
                 result = TimeConverter().convert(fet, fromSpinner, toSpinner)
+            }
+
+            "frequency" -> {
+                result = FrequencyConverter().convert(fet, fromSpinner, toSpinner)
+            }
+
+            "consumption" -> {
+                result = ConsumptionConverter().convert(fet, fromSpinner, toSpinner)
             }
         }
 
