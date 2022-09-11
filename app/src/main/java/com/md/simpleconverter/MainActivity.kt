@@ -29,6 +29,8 @@ class MainActivity : AppCompatActivity() {
         val temperatureCardView = findViewById<MaterialCardView>(R.id.home_temperature_cardview)
         val massCardView = findViewById<MaterialCardView>(R.id.home_mass_cardview)
         val timeCardView = findViewById<MaterialCardView>(R.id.home_time_cardview)
+        val frequencyCardView = findViewById<MaterialCardView>(R.id.home_frequency_cardview)
+        val consumptionCardView = findViewById<MaterialCardView>(R.id.home_consumption_cardview)
 
         val settingsImageView = findViewById<ImageView>(R.id.settings_imageview)
 
@@ -54,6 +56,14 @@ class MainActivity : AppCompatActivity() {
 
         timeCardView.setOnClickListener {
             startConverter("time", intent)
+        }
+
+        frequencyCardView.setOnClickListener {
+            startConverter("frequency", intent)
+        }
+
+        consumptionCardView.setOnClickListener {
+            startConverter("consumption", intent)
         }
 
         settingsImageView.setOnClickListener {
