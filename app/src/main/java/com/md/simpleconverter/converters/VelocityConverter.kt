@@ -21,8 +21,11 @@ class VelocityConverter {
     }
 
     fun convert(fet: EditText, fromSpinner: Spinner, toSpinner: Spinner) : Double {
+        val fromUnit = fromSpinner.selectedItem.toString()
+        val valueToConvert = fet.text.toString().toDouble()
+
         toUnit = toSpinner.selectedItem.toString()
-        fromValue = toMS(fet.text.toString().toDouble(), fromSpinner.selectedItem.toString())
+        fromValue = toMS(valueToConvert, fromUnit)
 
         return fromValue * velocityTable[toUnit]!!
     }

@@ -8,7 +8,8 @@ class ConsumptionConverter {
     private val consumptionTable = mapOf(
         "US mpg" to 2.352,
         "Imp mpg" to 2.825,
-        "km/L" to 1.00
+        "km/L" to 1.00,
+        "L/100km" to 100.00
     )
 
     private var toUnit = ""
@@ -19,11 +20,8 @@ class ConsumptionConverter {
 
         for (unit in consumptionTable.entries) {
             if (unit.key == fromUnit) {
-
-                // TODO
-
-                result = if (fromUnit == "" && toUnit == "L/100km" || fromUnit == "L/100km" && toUnit == "") {
-                    100.00 / value
+                result = if (fromUnit == "km/L" && toUnit == "L/100km" || fromUnit == "L/100km" && toUnit == "km/L") {
+                    100.00 * value
 
                 } else {
                     value * unit.value.toString().toDouble()
@@ -34,15 +32,13 @@ class ConsumptionConverter {
         return result
     }
 
-    fun convert(fet: EditText, fromSpinner: Spinner, toSpinner: Spinner) : Double {
-        // TODO
+    fun convert(fet: EditText, fromSpinner: Spinner, toSpinner: Spinner): Double {
+        val fromUnit = fromSpinner.selectedItem.toString()
+        val valueToConvert = fet.text.toString().toDouble()
 
         toUnit = toSpinner.selectedItem.toString()
-        fromValue = toKmL(fet.text.toString().toDouble(), fromSpinner.selectedItem.toString())
+        fromValue = toKmL(valueToConvert, fromUnit)
 
-        var result = fromValue / consumptionTable[toUnit]!!
-
-
-        return result
+        return fromValue / consumptionTable[toUnit]!!
     }
 }

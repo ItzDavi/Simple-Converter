@@ -36,8 +36,11 @@ class LengthsConverter {
     }
 
     fun convert(fet: EditText, fromSpinner: Spinner, toSpinner: Spinner) : Double {
+        val fromUnit = fromSpinner.selectedItem.toString()
+        val valueToConvert = fet.text.toString().toDouble()
+
         toUnit = toSpinner.selectedItem.toString()
-        fromValue = toM(fet.text.toString().toDouble(), fromSpinner.selectedItem.toString())
+        fromValue = toM(valueToConvert, fromUnit)
 
         return fromValue / lengthsTable[toUnit]!!
     }

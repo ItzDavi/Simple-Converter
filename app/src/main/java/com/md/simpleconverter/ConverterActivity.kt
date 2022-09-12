@@ -58,27 +58,12 @@ class ConverterActivity : AppCompatActivity() {
                     resultCardView.visibility = View.VISIBLE
 
                     when (conversion) {
-                        "lengths" -> {
-                            (fromEditText.text.toString() + " " + fromSpinner.selectedItem.toString() + "   =   " + convert(fromEditText, fromSpinner, toSpinner, conversion).round(5).toString() + " " + toSpinner.selectedItem.toString())
-                                .also { resultTextView.text = it }
-
-                        }
-                        "datadim" -> {
-                            (fromEditText.text.toString() + " " + fromSpinner.selectedItem.toString() + "   =   " + convert(fromEditText, fromSpinner, toSpinner, conversion).round(7).toString() + " " + toSpinner.selectedItem.toString())
-                                .also { resultTextView.text = it }
-
-                        }
-                        "mass" -> {
-                            (fromEditText.text.toString() + " " + fromSpinner.selectedItem.toString() + "   =   " + convert(fromEditText, fromSpinner, toSpinner, conversion).round(4).toString() + " " + toSpinner.selectedItem.toString())
-                                .also { resultTextView.text = it }
-
-                        }
-                        "frequency" -> {
-                            (fromEditText.text.toString() + " " + fromSpinner.selectedItem.toString() + "   =   " + convert(fromEditText, fromSpinner, toSpinner, conversion).round(7).toString() + " " + toSpinner.selectedItem.toString())
+                        "time" -> {
+                            (fromEditText.text.toString() + " " + fromSpinner.selectedItem.toString() + "   =   " + convert(fromEditText, fromSpinner, toSpinner, conversion).round(14).toString() + " " + toSpinner.selectedItem.toString())
                                 .also { resultTextView.text = it }
                         }
                         else -> {
-                            (fromEditText.text.toString() + " " + fromSpinner.selectedItem.toString() + "   =   " + convert(fromEditText, fromSpinner, toSpinner, conversion).round(2).toString() + " " + toSpinner.selectedItem.toString())
+                            (fromEditText.text.toString() + " " + fromSpinner.selectedItem.toString() + "   =   " + convert(fromEditText, fromSpinner, toSpinner, conversion).round(12).toString() + " " + toSpinner.selectedItem.toString())
                                 .also { resultTextView.text = it }
                         }
                     }
@@ -174,12 +159,18 @@ class ConverterActivity : AppCompatActivity() {
                 loadSpinnerArray("frequency")
                 initSpinners(fromSpinner, toSpinner)
             }
+
+            "consumption" -> {
+                "Consumption".also { conversionTV.text = it }
+                loadSpinnerArray("consumption")
+                initSpinners(fromSpinner, toSpinner)
+            }
         }
     }
 
     private fun initEditText(fet: EditText) {
         fet.inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL or InputType.TYPE_NUMBER_FLAG_SIGNED
-        fet.keyListener = DigitsKeyListener.getInstance("0123456789,")
+        fet.keyListener = DigitsKeyListener.getInstance("0123456789.")
     }
 
     private fun initSpinners(fs: Spinner, ts: Spinner) {
@@ -232,14 +223,19 @@ class ConverterActivity : AppCompatActivity() {
         var flag = false
 
         if (TextUtils.isEmpty(fet.text)) {
-            Toast.makeText(this, "Some inputs are missing", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "The value to convert is missing", Toast.LENGTH_SHORT).show()
 
         } else if (fromSpinner.selectedItem.toString() == toSpinner.selectedItem.toString()) {
             Toast.makeText(this, "Why would you convert to the same measure unit ?", Toast.LENGTH_SHORT).show()
 
         } else {
             if (TextUtils.isDigitsOnly(fet.text)) {
-                flag = true
+                if (fet.text.toString().toDouble() > 0) {
+                    flag = true
+                }
+                
+            } else {
+                Toast.makeText(this, "Too many dots in this number", Toast.LENGTH_SHORT).show()
             }
         }
 

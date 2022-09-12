@@ -34,8 +34,11 @@ class TimeConverter {
     }
 
     fun convert(fet: EditText, fromSpinner: Spinner, toSpinner: Spinner) : Double {
+        val fromUnit = fromSpinner.selectedItem.toString()
+        val valueToConvert = fet.text.toString().toDouble()
+
         toUnit = toSpinner.selectedItem.toString()
-        fromValue = toDays(fet.text.toString().toDouble(), fromSpinner.selectedItem.toString())
+        fromValue = toDays(valueToConvert, fromUnit)
 
         return fromValue * timeTable[toUnit]!!
     }

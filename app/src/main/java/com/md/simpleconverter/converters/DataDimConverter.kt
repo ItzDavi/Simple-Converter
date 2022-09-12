@@ -36,8 +36,11 @@ class DataDimConverter {
     }
 
     fun convert(fet: EditText, fromSpinner: Spinner, toSpinner: Spinner) : Double {
+        val fromUnit = fromSpinner.selectedItem.toString()
+        val valueToConvert = fet.text.toString().toDouble()
+
         toUnit = toSpinner.selectedItem.toString()
-        fromValue = toByte(fet.text.toString().toDouble(), fromSpinner.selectedItem.toString())
+        fromValue = toByte(valueToConvert, fromUnit)
 
         return fromValue * datadimTable[toUnit]!!
     }

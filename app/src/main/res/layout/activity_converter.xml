@@ -104,6 +104,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.8"
                     android:paddingVertical="5dp"
+                    android:paddingHorizontal="10dp"
+                    android:textStyle="bold"
                     android:maxLines="1"
                     android:background="@drawable/custom_converter_edittext"
                     android:textColor="@color/white"

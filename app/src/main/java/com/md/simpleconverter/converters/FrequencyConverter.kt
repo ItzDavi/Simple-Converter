@@ -28,8 +28,11 @@ class FrequencyConverter {
     }
 
     fun convert(fet: EditText, fromSpinner: Spinner, toSpinner: Spinner) : Double {
+        val fromUnit = fromSpinner.selectedItem.toString()
+        val valueToConvert = fet.text.toString().toDouble()
+
         toUnit = toSpinner.selectedItem.toString()
-        fromValue = toHertz(fet.text.toString().toDouble(), fromSpinner.selectedItem.toString())
+        fromValue = toHertz(valueToConvert, fromUnit)
 
         return fromValue / frequencyTable[toUnit]!!
     }

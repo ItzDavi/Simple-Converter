@@ -6,8 +6,8 @@ import android.widget.Spinner
 class MassConverter {
 
     private val massTable = mapOf(
-        "T" to 1000000.00,
-        "Q" to 100000.00,
+        "tons" to 1000000.00,
+        "quints" to 100000.00,
         "Kg" to 1000.00,
         "hg" to 100.00,
         "dag" to 10.00,
@@ -35,8 +35,11 @@ class MassConverter {
     }
 
     fun convert(fet: EditText, fromSpinner: Spinner, toSpinner: Spinner) : Double {
+        val fromUnit = fromSpinner.selectedItem.toString()
+        val valueToConvert = fet.text.toString().toDouble()
+
         toUnit = toSpinner.selectedItem.toString()
-        fromValue = toGrams(fet.text.toString().toDouble(), fromSpinner.selectedItem.toString())
+        fromValue = toGrams(valueToConvert, fromUnit)
 
         return fromValue / massTable[toUnit]!!
     }
