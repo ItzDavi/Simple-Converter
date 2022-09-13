@@ -1,5 +1,8 @@
 package com.md.simpleconverter
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
@@ -24,6 +27,8 @@ class ConverterActivity : AppCompatActivity() {
         val conversion = intent.getStringExtra("conversion")
         val conversionTextView = findViewById<TextView>(R.id.converter_textview)
         val convertButton = findViewById<Button>(R.id.convert_button)
+
+        val tapToCopyTextView = findViewById<TextView>(R.id.tap_to_copy_textview)
 
         val resultTextView = findViewById<TextView>(R.id.conversion_result_textview)
         val resultCardView = findViewById<MaterialCardView>(R.id.result_cardview)
@@ -56,6 +61,9 @@ class ConverterActivity : AppCompatActivity() {
             convertButton.setOnClickListener {
                 if (checkInputs(fromEditText, fromSpinner, toSpinner)) {
                     resultCardView.visibility = View.VISIBLE
+                    tapToCopyTextView.visibility = View.VISIBLE
+
+                    "Tap to copy".also { tapToCopyTextView.text = it }
 
                     when (conversion) {
                         "time" -> {
@@ -73,6 +81,21 @@ class ConverterActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this, "Failed getting intents from Main Activity", Toast.LENGTH_SHORT).show()
         }
+
+        resultCardView.setOnClickListener {
+            copyTextToClipboard(resultTextView)
+
+            "Copied!".also { tapToCopyTextView.text = it }
+        }
+    }
+
+    private fun copyTextToClipboard(text: TextView) {
+        val textToCopy = text.text
+
+        val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clipData = ClipData.newPlainText("text", textToCopy)
+
+        clipboardManager.setPrimaryClip(clipData)
     }
 
     private fun changeRandomColors(layout: ConstraintLayout, fromCardView: MaterialCardView, toCardView: MaterialCardView, fromSpinner: Spinner, toSpinner: Spinner, conversion: String, sharedPref: SharedPreferences) {
@@ -233,7 +256,7 @@ class ConverterActivity : AppCompatActivity() {
                 if (fet.text.toString().toDouble() > 0) {
                     flag = true
                 }
-                
+
             } else {
                 Toast.makeText(this, "Too many dots in this number", Toast.LENGTH_SHORT).show()
             }

@@ -175,6 +175,16 @@
 
     </com.google.android.material.card.MaterialCardView>
 
+    <TextView
+        android:id="@+id/tap_to_copy_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tap to copy"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/result_cardview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/result_cardview"
         android:layout_width="wrap_content"
