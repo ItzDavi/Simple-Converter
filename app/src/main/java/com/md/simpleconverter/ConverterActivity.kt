@@ -5,6 +5,7 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
 import android.text.InputType
 import android.text.TextUtils
@@ -13,8 +14,12 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.card.MaterialCardView
 import com.md.simpleconverter.converters.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import kotlin.math.round
 
 class ConverterActivity : AppCompatActivity() {
@@ -42,12 +47,17 @@ class ConverterActivity : AppCompatActivity() {
 
         val sharedPreferences = getSharedPreferences("com.md.simpleconverter", MODE_PRIVATE)
 
+        val fromEditText = findViewById<EditText>(R.id.from_edittext)
+
+        val rootLayout = findViewById<ConstraintLayout>(R.id.root_layout)
+        rootLayout.setOnClickListener {
+            Utils().removeFocus(fromEditText, baseContext)
+        }
+
         val backButton = findViewById<ImageView>(R.id.back_button_imageview)
         backButton.setOnClickListener {
             finish()
         }
-
-        val fromEditText = findViewById<EditText>(R.id.from_edittext)
 
         initEditText(fromEditText)
 
@@ -85,7 +95,15 @@ class ConverterActivity : AppCompatActivity() {
         resultCardView.setOnClickListener {
             copyTextToClipboard(resultTextView)
 
-            "Copied!".also { tapToCopyTextView.text = it }
+            lifecycleScope.launch {
+                "Copied!".also { tapToCopyTextView.text = it }
+                tapToCopyTextView.setTypeface(null, Typeface.BOLD_ITALIC)
+
+                delay(2000)
+
+                "Tap to copy".also { tapToCopyTextView.text = it }
+                tapToCopyTextView.setTypeface(null, Typeface.ITALIC)
+            }
         }
     }
 
@@ -99,9 +117,7 @@ class ConverterActivity : AppCompatActivity() {
     }
 
     private fun changeRandomColors(layout: ConstraintLayout, fromCardView: MaterialCardView, toCardView: MaterialCardView, fromSpinner: Spinner, toSpinner: Spinner, conversion: String, sharedPref: SharedPreferences) {
-
         val rootLayout = findViewById<ConstraintLayout>(R.id.root_layout)
-        rootLayout.setBackgroundColor(getColor(R.color.soft_white))
 
         val randomTheme = sharedPref.getBoolean("random_theme", true)
         val themeColor = sharedPref.getInt("theme_color", 0)
@@ -110,13 +126,15 @@ class ConverterActivity : AppCompatActivity() {
             getColor(R.color.yellow_folder_icon),
             getColor(R.color.blue),
             getColor(R.color.red_tape_icon),
-            getColor(R.color.purple)
-        )
+            getColor(R.color.purple))
 
         window.clearFlags(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)
 
         if (randomTheme) {
             val randomColor = colors.random()
+
+            rootLayout.setBackgroundColor(getColor(R.color.soft_white))
+
             window.statusBarColor = randomColor
             layout.background.setTint(randomColor)
 
@@ -128,6 +146,9 @@ class ConverterActivity : AppCompatActivity() {
 
         } else if (!randomTheme) {
             val color = colors[themeColor]
+
+            rootLayout.setBackgroundColor(getColor(R.color.soft_white))
+
             window.statusBarColor = color
             layout.background.setTint(color)
 
@@ -200,6 +221,9 @@ class ConverterActivity : AppCompatActivity() {
         val adapter = ArrayAdapter(this, R.layout.custom_spinner_layout, spinnerData)
         fs.adapter = adapter
         ts.adapter = adapter
+
+        fs.setSelection(0)
+        ts.setSelection(1)
     }
 
     private fun loadSpinnerArray(conversionType: String) {
