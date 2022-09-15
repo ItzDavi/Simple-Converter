@@ -6,6 +6,6 @@
     android:ellipsize="end"
     android:maxLines="1"
     android:textColor="@color/white"
-    android:paddingHorizontal="8dp"
-    android:paddingVertical="6dp">
+    android:paddingHorizontal="5dp"
+    android:paddingBottom="3dp">
 </TextView>
