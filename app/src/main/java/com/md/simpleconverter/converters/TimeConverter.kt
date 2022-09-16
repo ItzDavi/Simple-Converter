@@ -2,7 +2,6 @@ package com.md.simpleconverter.converters
 
 import android.widget.EditText
 import android.widget.Spinner
-import kotlin.math.roundToInt
 
 class TimeConverter {
 
