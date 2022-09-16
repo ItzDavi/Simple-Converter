@@ -32,13 +32,14 @@
                 android:src="@drawable/ic_round_arrow_back_ios_new_24"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/white" />
+                app:tint="@color/white"
+                android:contentDescription="@string/back_button_image" />
 
             <TextView
                 android:id="@+id/converter_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Simple Converter"
+                android:text="@string/converter_title_textview"
                 android:textSize="20sp"
                 android:textColor="@color/white"
                 android:textStyle="bold"
@@ -91,7 +92,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.15"
-                    android:text="From"
+                    android:text="@string/from_converter_textview"
                     android:paddingVertical="3dp"
                     android:textColor="@color/white"
                     android:textSize="18sp"
@@ -126,7 +127,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/from_linear_layout" />
+                app:layout_constraintTop_toBottomOf="@id/from_linear_layout"
+                tools:ignore="Autofill,LabelFor,TextFields" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -160,7 +162,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.08"
-                android:text="To"
+                android:text="@string/to_converter_textview"
                 android:paddingVertical="3dp"
                 android:textColor="@color/white"
                 android:textSize="18sp"
@@ -187,7 +189,7 @@
         android:id="@+id/tap_to_copy_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tap to copy"
+        android:text="@string/tap_to_copy_textview"
         android:visibility="gone"
         android:textStyle="italic"
         android:textSize="12sp"
@@ -213,7 +215,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
-            android:text="Result"
+            android:text="@string/result_converter_textview"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:padding="10dp"
@@ -232,7 +234,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
-        android:text="Convert"
+        android:text="@string/convert_button"
         android:textColor="@color/white"
         android:paddingHorizontal="40dp"
         app:layout_constraintBottom_toBottomOf="parent"

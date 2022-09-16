@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="Simple Converter"
+        android:text="@string/home_title_textview"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +28,8 @@
         android:src="@drawable/ic_round_settings_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/gray" />
+        app:tint="@color/gray"
+        android:contentDescription="@string/settings_button_image" />
 
     <LinearLayout
         android:id="@+id/home_linear_layout"
@@ -65,14 +66,15 @@
                     android:src="@drawable/gallery"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/data_card_image" />
 
                 <TextView
                     android:id="@+id/datadim_cardview_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="5dp"
-                    android:text="Data"
+                    android:text="@string/data_cardview_text"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/datadim_cardview_imageview"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -103,14 +105,15 @@
                     android:src="@drawable/measuring_tape"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/lengths_card_image" />
 
                 <TextView
                     android:id="@+id/lengths_cardview_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="5dp"
-                    android:text="Lengths"
+                    android:text="@string/lengths_cardview_text"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/lengths_cardview_imageview"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -155,14 +158,15 @@
                     android:src="@drawable/velocity"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/velocity_card_image" />
 
                 <TextView
                     android:id="@+id/velocity_cardview_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="5dp"
-                    android:text="Velocity"
+                    android:text="@string/velocity_cardview_text"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/velocity_cardview_imageview"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -193,14 +197,15 @@
                     android:src="@drawable/thermometer"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/temperature_card_image" />
 
                 <TextView
                     android:id="@+id/temperature_cardview_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="5dp"
-                    android:text="Temperature"
+                    android:text="@string/temperature_cardview_text"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/temperature_cardview_imageview"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -245,14 +250,15 @@
                     android:src="@drawable/weight_scale"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/mass_card_image" />
 
                 <TextView
                     android:id="@+id/mass_cardview_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="5dp"
-                    android:text="Mass"
+                    android:text="@string/mass_cardview_text"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/mass_cardview_imageview"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -283,14 +289,15 @@
                     android:src="@drawable/schedule"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/time_card_image" />
 
                 <TextView
                     android:id="@+id/time_cardview_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="5dp"
-                    android:text="Time"
+                    android:text="@string/time_cardview_text"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/time_cardview_imageview"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -335,14 +342,15 @@
                     android:src="@drawable/frequency"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/frequency_card_image" />
 
                 <TextView
                     android:id="@+id/frequency_cardview_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="5dp"
-                    android:text="Frequency"
+                    android:text="@string/frequency_cardview_text"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/frequency_cardview_imageview"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -373,14 +381,15 @@
                     android:src="@drawable/fuel_pump"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/consumption_card_image" />
 
                 <TextView
                     android:id="@+id/consumption_cardview_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="5dp"
-                    android:text="Consumption"
+                    android:text="@string/consumption_cardview_text"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/consumption_cardview_imageview"
                     app:layout_constraintTop_toTopOf="parent" />
