@@ -1,9 +1,10 @@
 package com.md.simpleconverter
 
+import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -24,6 +25,13 @@ class SettingsActivity : AppCompatActivity() {
         val randomRadioButton = findViewById<RadioButton>(R.id.customize_theme_random_radiobutton)
         val fixedRadioButton = findViewById<RadioButton>(R.id.customize_theme_fixed_radiobutton)
         val radioGroup = findViewById<RadioGroup>(R.id.customize_theme_radiogroup)
+
+        val attributionsLayout = findViewById<LinearLayout>(R.id.attributions_linear_layout)
+        attributionsLayout.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.flaticon.com/"))
+            startActivity(intent)
+        }
+
 
         val changeThemeLayout = findViewById<LinearLayout>(R.id.change_theme_linear_layout)
         changeThemeLayout.setOnClickListener {
